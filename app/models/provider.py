@@ -16,5 +16,5 @@ class Provider:
     transportation_time: Optional[np.float32] = None
 
     def __str__(self) -> str:
-        time_str = f"{self.transportation_time} seconds" if self.transportation_time is not None else "Not calculated"
-        return f"{self.name} - {self.location.name} - {self.available_quantity} units available - Estimated time: {time_str}"
+        time_str = f"(g){self.transportation_time} seconds" if self.transportation_time is not None else "Not calculated"
+        return f"{self.name} - {self.location.name} - {self.available_quantity} units available - Estimated time: {time_str} - Departure instant: {self.departure_instant} seconds"

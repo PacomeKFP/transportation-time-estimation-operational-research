@@ -1,7 +1,7 @@
 from app.models.chunk import Chunk
 from dataclasses import dataclass
-from typing import List, Optional
-from app.intersection import Intersection
+from typing import List
+from app.models.intersection import Intersection
 
 @dataclass
 class Edge:

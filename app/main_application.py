@@ -1,14 +1,14 @@
-from ast import Tuple
+from typing import List, Optional, Tuple
 from dataclasses import dataclass, field
-from typing import List, Optional
 
 
-import numpy as np
 from app.models.intersection import Intersection
 from app.models.provider import Provider
 from app.models.tdg import TDG
 from app.constants import DELTA_T, MAX_NUMBER
 from app.solvers.object_orda import ObjectOrdaSolver
+from app.solvers.orda_rom_solver import OrdaRomSolver
+from app.solvers.two_step_ltt_2008_solver import TwoStepLTT2008Solver
 
 
 
@@ -16,10 +16,10 @@ from app.solvers.object_orda import ObjectOrdaSolver
 class MainApplication:
     providers: List[Provider]
     location: Intersection
+    time_window: Tuple[int, int]
     map: Optional[TDG] = None
     requested_quantity: int = 0
     time_differential: int = DELTA_T
-    time_window: Tuple[int, int] = (0, 100)
     preselected_providers: List[Provider] = field(default_factory=list)
     sorted_providers: List[Provider] = field(default_factory=list)
 
@@ -41,7 +41,7 @@ class MainApplication:
 
     def _estimate_transportation_time_for_each_provider(self) -> None:
         for provider in self.preselected_providers:
-            orda_results = ObjectOrdaSolver.solve(
+            orda_results = TwoStepLTT2008Solver.solve(
                 tdg=self.map,
                 source=provider.location,
                 destination=self.location,
@@ -50,9 +50,9 @@ class MainApplication:
 
             provider.departure_instant = orda_results.t_star
             
-            provider.best_path = orda_results.path
+            # provider.best_path = orda_results.path
             # TODO: verifier si le coût total est bien calculé
-            provider.best_path.total_cost = orda_results.total_cost
+            provider.transportation_time = orda_results.total_cost
             
             
 

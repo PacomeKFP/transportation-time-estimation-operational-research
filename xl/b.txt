@@ -1,0 +1,5 @@
+Fournisseurs	Capacité de production (m3/h)	Capacité de livraison par rapport à la contenance des camion-toupies (m3)	Coût au m3 (FCFA)	Facturation de la pompe (FCFA/m3)	Qualité 	Localisation
+CMCC (F1)	50	76	108,000.00	7,000.00	ISO 9001, Certications sur les matériaux	Etoa Maki
+BCC (F2)	50	56	109,000.00	10,000.00	ISO 9001, Certications sur les matériaux	Olembé
+SAINTE HELENE  (F3)	45	66	105,000.00	6,500.00	ISO 9001, Certications sur les matériaux	Nouvelle route Mvan
+SOMAF (F4)	200	86	110,000.00	8,000.00	ISO 9001, Certications sur les matériaux	Nomayos

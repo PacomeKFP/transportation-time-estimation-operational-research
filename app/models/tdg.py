@@ -1,9 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional, Set, Tuple, List, Callable
+from typing import Optional, Set, List, Callable
 
-from trash.massah_dataclass import Edge
-from app.intersection import Intersection
-
+from app.models.intersection import Intersection
+from app.models.edge import Edge
 
 @dataclass
 class TDG:

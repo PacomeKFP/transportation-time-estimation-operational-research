@@ -15,5 +15,11 @@ class Intersection:
             return self.name == other.name
         return False
     
+    def __lt__(self, other):
+        """Pour heapq quand les priorités sont égales"""
+        if isinstance(other, Intersection):
+            return self.name < other.name
+        return NotImplemented
+    
     def __repr__(self):
         return f"Intersection({self.name})"
